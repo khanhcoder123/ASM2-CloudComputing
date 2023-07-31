@@ -4,7 +4,7 @@ const collectionName = 'toy';
 
 async function getProducts() {
   const db = await getDatabase();
-  return await db.collection(collectionName).find().toArray();
+  return db.collection(collectionName).find().toArray();
 }
 
 async function createProduct(item) {
