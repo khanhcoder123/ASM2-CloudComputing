@@ -1,6 +1,6 @@
 const { MongoClient } = require('mongodb');
 
-const mongoURI = 'mongodb://localhost:27017';
+const mongoURI = 'mongodb+srv://khanhnqbh00114:khanh123@cluster0.m27xh35.mongodb.net/';
 const dbName = 'products';
 
 let db;

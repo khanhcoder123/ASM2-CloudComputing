@@ -1,10 +1,10 @@
 const { getDatabase } = require('./db');
 
-const collectionName = 'products';
+const collectionName = 'toy';
 
 async function getProducts() {
-  const db = getDatabase();
-  return db.collection(collectionName).find().toArray();
+  const db = await getDatabase();
+  return await db.collection(collectionName).find().toArray();
 }
 
 async function createProduct(item) {

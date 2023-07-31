@@ -13,6 +13,7 @@ connectToDatabase();
 
 app.get('/', async (req, res) => {
   const items = await getProducts();
+  console.log(items)
   res.render('homepage', { products: items });
 });
 app.get('/homepage', async (req, res) => {
@@ -88,7 +89,7 @@ app.get('/register', (req, res) => {
   res.render('register');
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-  console.log(`Server is running on :${PORT}`);
-});
+const PORT = process.env.PORT || 3000
+app.listen(PORT,()=>{
+    console.log(`Server is running on :${PORT}`)
+})
