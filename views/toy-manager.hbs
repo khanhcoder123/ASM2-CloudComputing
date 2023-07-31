@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToyLand - Cửa hàng đồ chơi trực tuyến</title>
+    <link rel="stylesheet" href="style.css">
+ <!-- Add the following link tags in the head section of your HTML -->
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+<link rel="stylesheet" href="/custom.css">
+
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <img src="logo.png" alt="ToyLand Logo" class="logo">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/homepage">Trang chủ</a></li>
+                    <li><a href="/toy-manager">Cửa hàng</a></li>
+                    <li><a href="#categories">Danh mục</a></li>
+                    <li><a href="#about">Giới thiệu</a></li>
+                    <li><a href="#contact">Liên hệ</a></li>
+                    <li><a href="#cart">Giỏ hàng</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+   
+  <div>
+    {{#each products}}
+    <div>
+      <img src="{{image}}" alt="{{name}}" style="max-width: 100px;">
+      <h3>{{name}}</h3>
+      <p>Price: {{price}}</p>
+      <p>{{description}}</p>
+      <a href="/edit/{{_id}}">Edit</a>
+      <form action="/delete/{{_id}}" method="POST">
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+    {{/each}}
+  </div>
+  <a href="/new">Add New Toy</a>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Liên hệ chúng tôi</h2>
+            <p>Nếu bạn có bất kỳ câu hỏi hoặc cần hỗ trợ, vui lòng liên hệ với chúng tôi qua thông tin bên dưới:</p>
+            <div class="contact-info">
+                <p><strong>Địa chỉ:</strong> Số 123, Đường ABC, Thành phố XYZ</p>
+                <p><strong>Số điện thoại:</strong> (012) 345-6789</p>
+                <p><strong>Email:</strong> info@toyland.com</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2023 ToyLand. All rights reserved.</p>
+            <div class="social-links">
+                <!-- Các biểu tượng mạng xã hội -->
+                <a href="#" class="social-icon"><img src="facebook.png" alt="Facebook"></a>
+                <a href="#" class="social-icon"><img src="instagram.png" alt="Instagram"></a>
+                <a href="#" class="social-icon"><img src="twitter.png" alt="Twitter"></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toy Manager Section -->
+    <section class="toy-manager">
+        <div class="container">
+            <!-- Add the content from toy-manager.hbs here -->
+        </div>
+    </section>
+</body>
+</html>
