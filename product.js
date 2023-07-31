@@ -1,6 +1,6 @@
 const { getDatabase } = require('./db');
 
-const collectionName = 'toy';
+const collectionName = 'collection';
 
 async function getProducts() {
   const db = await getDatabase();
