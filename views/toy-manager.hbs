@@ -8,7 +8,31 @@
  <!-- Add the following link tags in the head section of your HTML -->
 <link rel="stylesheet" href="/css/bootstrap.min.css">
 <link rel="stylesheet" href="/custom.css">
+<style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
 
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    tr:hover {
+      background-color: #ddd;
+    }
+  </style>
+</style>
 </head>
 <body>
     <!-- Header -->
@@ -28,21 +52,35 @@
         </div>
     </header>
     
-   
-  <div>
-    {{#each products}}
-    <div>
-      <img src="{{image}}" alt="{{name}}" style="max-width: 100px;">
-      <h3>{{name}}</h3>
-      <p>Price: {{price}}</p>
-      <p>{{description}}</p>
-      <a href="/edit/{{_id}}">Edit</a>
-      <form action="/delete/{{_id}}" method="POST">
-        <button type="submit">Delete</button>
-      </form>
-    </div>
-    {{/each}}
-  </div>
+ 
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Image</th>
+        <th>Description</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each products}}
+      <tr>
+        <td>{{name}}</td>
+        <td>{{price}}</td>
+        <td><img src="{{image}}" alt="{{name}}" style="max-width: 100px;"></td>
+        <td>{{description}}</td>
+        <td><a href="/edit/{{_id}}">Edit</a></td>
+        <td>
+          <form action="/delete/{{_id}}" method="POST">
+            <button type="submit">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {{/each}}
+    </tbody>
+  </table>
   <a href="/new">Add New Toy</a>
 
     <!-- Contact Section -->
