@@ -16,7 +16,7 @@
     "hbs": "^4.2.0",
     "mongoose": "^7.4.1"
   },
- 
+  "description": "",
   "engines": {
     "node": ">=17"
   }
