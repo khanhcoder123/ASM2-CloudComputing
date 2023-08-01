@@ -3,11 +3,14 @@ const app = express();
 const exphbs = require('express-handlebars');
 const { connectToDatabase } = require('./db');
 const { getProducts, createProduct, getProductById, updateProduct, deleteProduct, searchProducts } = require('./product');
+
 // Cấu hình static middleware cho thư mục public
 app.use(express.static('public'));
 app.set('view engine', 'hbs');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+
 
 connectToDatabase();
 
@@ -57,15 +60,29 @@ app.post('/edit/:id', async (req, res) => {
   }
 });
 
-app.post('/delete/:id', async (req, res) => {
-  const { id } = req.params;
+//delete
+app.delete('/delete/:_id', async (req, res) => {
+  const { _id } = req.params;
   try {
-    await deleteProduct(id);
+    await deleteProduct(_id);
     res.redirect('/');
   } catch (err) {
     res.status(400).json({ message: err.message });
   }
 });
+
+// app.delete('/delete/:_id', async (req, res) => {
+//   const { _id } = req.params;
+//   try {
+//     await deleteProduct(_id);
+//     res.redirect('/toy-manager');
+//   } catch (err) {
+//     res.status(400).json({ message: err.message });
+//   }
+// });
+
+//end delete
+
 
 app.get('/toy-manager', async (req, res) => {
   const items = await getProducts();
@@ -81,6 +98,7 @@ app.post('/search', async (req, res) => {
     res.status(400).json({ message: err.message });
   }
 });
+
 app.get('/login', (req, res) => {
   res.render('login');
 });
@@ -89,7 +107,7 @@ app.get('/register', (req, res) => {
   res.render('register');
 });
 
-const PORT = process.env.PORT || 5000
-app.listen(PORT,()=>{
-    console.log(`Server is running on :${PORT}`)
-})
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server is running on :${PORT}`);
+});

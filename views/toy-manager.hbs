@@ -52,10 +52,10 @@
         </div>
     </header>
     
- 
   <table>
     <thead>
       <tr>
+        <th>ID</th>
         <th>Name</th>
         <th>Price</th>
         <th>Image</th>
@@ -67,13 +67,15 @@
     <tbody>
       {{#each products}}
       <tr>
+        <td>{{_id}}</td>
         <td>{{name}}</td>
         <td>{{price}}</td>
         <td><img src="{{image}}" alt="{{name}}" style="max-width: 100px;"></td>
         <td>{{description}}</td>
         <td><a href="/edit/{{_id}}">Edit</a></td>
         <td>
-          <form action="/delete/{{_id}}" method="POST">
+          <form action="/delete/{{_id}}" method="POST" onsubmit="return confirmDelete(event)">
+            <input type="hidden" name="_method" value="DELETE">
             <button type="submit">Delete</button>
           </form>
         </td>
