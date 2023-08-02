@@ -1,3 +1,4 @@
+// product.js
 
 const { getDatabase, ObjectId } = require('./db');
 
@@ -14,17 +15,30 @@ async function createProduct(item) {
   return result;
 }
 
-//delete
-async function deleteProduct(_id) {
+async function getProductById(productId) {
   const db = await getDatabase();
-  const query = { id: ObjectId(_id) };
-  await db.collection(collectionName).deleteOne(query);
+  return db.collection(collectionName).findOne({ _id: ObjectId(productId) });
 }
 
-//end delete
+async function updateProduct(productId, newData) {
+  const db = await getDatabase();
+  const result = await db.collection(collectionName).updateOne(
+    { _id: ObjectId(productId) },
+    { $set: newData }
+  );
+  return result;
+}
 
+async function deleteProduct(productId) {
+  const db = await getDatabase();
+  const result = await db.collection(collectionName).deleteOne({ _id: ObjectId(productId) });
+  return result;
+}
 
-module.exports = { getProducts, createProduct, deleteProduct };
-
-
-
+module.exports = {
+  getProducts,
+  createProduct,
+  getProductById,
+  updateProduct,
+  deleteProduct,
+};
